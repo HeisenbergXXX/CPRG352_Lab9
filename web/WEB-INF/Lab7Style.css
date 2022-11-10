@@ -1,0 +1,122 @@
+/*Lab7 JDBC style sheet*/
+
+/*General style*/
+body {
+    background-color: rgb(45, 45, 45);
+    color: #d2d2d2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #d2d2d2;
+    font-weight: bold;
+    padding: 6px;
+    margin-left: 10vw;
+}
+
+h2 {
+    color: #d2d2d2;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 6px;
+    margin-left: 10vw;
+}
+
+/*table style*/
+table.main {
+    border: 1px solid #6c6b6b;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 10vw;
+}
+
+table.main th {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px;
+    background-color: #30862a;
+    color: #fdfdfd;
+}
+table.main tr:nth-child(odd) {
+    background-color: #525952;
+}
+
+table.main td {
+    font-size: 14px;
+    width: auto;
+}
+
+/*table add*/
+table.add {
+    width: 22%;
+    margin-left: 10vw;
+}
+
+table.add td {
+    padding: 1px;
+}
+
+input[type=text] {
+    width: 97%;
+}
+
+/*role style*/
+.drop {
+    color: #0c0b0b;
+    font-size: 12px;
+    text-align: left;
+    padding: 3px;
+    width: 100%;
+    text-transform: capitalize;
+}
+
+.roleText {
+    text-transform: capitalize;
+}
+
+/*button style*/
+input[type="submit"] {
+    background-color: #d2d2d2;
+    border: 1px solid #6c6b6b;
+    color: #0c0b0b;
+    font-size: 12px;
+    padding: 3px;
+    width: 100%;
+
+}
+/*button hover style*/
+input[type="submit"]:hover {
+    background-color: #30862a;
+    color: #d2d2d2;
+}
+
+p {
+    margin-left: 10vw;
+    padding: 10px;
+    color: #c50a0a;
+    font-size: 18px;
+}
+#ade {
+    color: #30862a;
+}
+
+a {
+    color: #ffffff;
+    margin-left: 10vw;
+    background-color: #30862a;
+    border: 1px solid #6c6b6b;
+    border-radius: 5px;
+    font-size: 15px;
+    padding-inline: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+#cancel {
+    width: 21.5%;
+    margin-left: 10.3vw;
+}
