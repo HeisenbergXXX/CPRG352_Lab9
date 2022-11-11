@@ -61,12 +61,13 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public User(String email, boolean active, String firstName, String lastName, String password) {
+    public User(String email, boolean active, String firstName, String lastName, String password, Role role) {
         this.email = email;
         this.active = active;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+        this.role = role;
     }
 
     public String getEmail() {
@@ -77,7 +78,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
@@ -85,7 +86,7 @@ public class User implements Serializable {
         this.active = active;
     }
 
-    public String getFirstName() {
+    public String getFirst_name() {
         return firstName;
     }
 
@@ -93,7 +94,7 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLast_name() {
         return lastName;
     }
 

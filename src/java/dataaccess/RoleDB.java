@@ -9,7 +9,7 @@ public class RoleDB {
     public List<Role> getAll() throws Exception {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
-            List<Role> roles = em.createNamedQuery("User.findAll", Role.class).getResultList();
+            List<Role> roles = em.createNamedQuery("Role.findAll", Role.class).getResultList();
             return roles;
         } finally {
             em.close();

@@ -32,11 +32,9 @@ public class UserDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         try{
-            Role role = user.getRole();
-            role.getUserList().add(user);
             trans.begin();
             em.persist(user);
-            em.merge(role);
+            em.merge(user);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();

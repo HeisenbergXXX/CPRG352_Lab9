@@ -57,9 +57,9 @@ public class UserServlet extends HttpServlet {
                 User user = us.get(email);
 
                 request.setAttribute("email", user.getEmail());
-                request.setAttribute("status", user.getActive());
-                request.setAttribute("firstName", user.getFirstName());
-                request.setAttribute("lastName", user.getLastName());
+                request.setAttribute("status", user.isActive());
+                request.setAttribute("first_name", user.getFirst_name());
+                request.setAttribute("last_name", user.getLast_name());
                 request.setAttribute("password", user.getPassword());
                 request.setAttribute("role", user.getRole());
             } catch (Exception ex) {
@@ -79,14 +79,15 @@ public class UserServlet extends HttpServlet {
 
         UserService us = new UserService();
         RoleService rs = new RoleService();
-        User user = new User();
+//        User user = new User();
         String action = request.getParameter("action");
         String email = request.getParameter("email");
         boolean active = Boolean.parseBoolean(request.getParameter("status"));
-        String firstname = request.getParameter("firstName");
-        String lastname = request.getParameter("lastName");
+        String firstname = request.getParameter("first_name");
+        String lastname = request.getParameter("last_name");
         String password = request.getParameter("password");
-        String roleId = request.getParameter("role");
+        String roleStr = request.getParameter("role");
+
         //add, delete edit user
         try {
             switch (action) {
@@ -108,8 +109,8 @@ public class UserServlet extends HttpServlet {
                             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
                             request.setAttribute("message", ex.getMessage());
                         }
-                        request.setAttribute("firstName", firstname);
-                        request.setAttribute("lastName", lastname);
+                        request.setAttribute("first_name", firstname);
+                        request.setAttribute("last_name", lastname);
                         request.setAttribute("email", email);
                         request.setAttribute("password", password);
                         request.setAttribute("status", active);
@@ -117,7 +118,8 @@ public class UserServlet extends HttpServlet {
                         request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
                         return;
                     }
-                    user = new User(email, active, firstname, lastname, password);
+                    Role role = new Role(Integer.parseInt(roleStr));
+                    User user = new User(email, active, firstname, lastname, password, role);
                     us.insert(user);
                     request.setAttribute("messageADE", "User: "+email+" added successfully!");
                     break;
@@ -138,8 +140,8 @@ public class UserServlet extends HttpServlet {
                             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
                             request.setAttribute("message", ex.getMessage());
                         }
-                        request.setAttribute("firstName", firstname);
-                        request.setAttribute("lastName", lastname);
+                        request.setAttribute("first_name", firstname);
+                        request.setAttribute("last_name", lastname);
                         request.setAttribute("email", email);
                         request.setAttribute("password", password);
                         request.setAttribute("status", active);
@@ -147,8 +149,8 @@ public class UserServlet extends HttpServlet {
                         request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
                         return;
                     }
-
-                    user = new User(email, active, firstname, lastname, password);
+                    role = new Role(Integer.parseInt(roleStr));
+                    user = new User(email, active, firstname, lastname, password, role);
                     us.update(user);
                     request.setAttribute("messageADE", "User: "+email+" updated successfully!");
                     break;
@@ -173,8 +175,8 @@ public class UserServlet extends HttpServlet {
                 Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex2);
                 request.setAttribute("message", ex2.getMessage());
             }
-            request.setAttribute("firstName", firstname);
-            request.setAttribute("lastName", lastname);
+            request.setAttribute("first_name", firstname);
+            request.setAttribute("last_name", lastname);
             request.setAttribute("email", email);
             request.setAttribute("password", password);
             request.setAttribute("status", active);
